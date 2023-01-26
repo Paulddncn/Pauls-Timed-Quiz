@@ -1,12 +1,10 @@
 # 04 Web APIs: Code Quiz
 
-## Your Task
+## About this project
+Project Name: Paul's Timed Quiz
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+This project asks the user if they would like to start a timed quiz. Once the quiz begins the user will go through and select an answer out of multiple choices. If the user picks the wrong answer, 2 seconds are taken off the clock. The users final score is based off the amount of time remaining. At the end the user is able to enter their initials and save this information along with their score.
 
-To help familiarize you with these tests and allow you to use the skills covered in this module, this Challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
-
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
 
 ## User Story
 
