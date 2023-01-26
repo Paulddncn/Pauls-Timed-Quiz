@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timed Quiz</title>
+    <link rel="stylesheet" href="./02-Challenge/Assets/style.css">
+</head>
+
+<body>
+    <div id="controls">
+        <h1>Coding Quiz</h1>
+        <p>Please press start to begin this quiz</p>
+    </div>
+    <div class="start-control">
+        <button id="start-btn" class="start-btn">Start</button>
+       
+    </div>
+    <div class="question-forum hide" id="card">
+        <div id="question-box">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn" id="A">A</button>
+                <button class="btn" id="B">B</button>
+                <button class="btn" id="C">C</button>
+                <button class="btn" id="D">D</button>
+            </div>
+        </div>
+    </div>
+    <p>Time Left: <span id="timer"></span></p>
+    <div id="end-quiz" class="hide">
+        <H1>Thank you for taking this quiz</H1>
+        <h2>Please enter your initials</h2>
+        <input id="init" type="text" />
+        <button id="submit">Submit</button>
+    </div>
+    <section class="highscores hide">
+        <h2>highscore</h2>
+        <p id="user-score"></p>
+        <div>
+            <ol id="finalscore">
+                <button id="go-back">Go Back</button>
+                <button id="clear-highscore">Clear Highscore</button>
+            </ol>
+        </div>
+    </section>
+    <script src="./02-Challenge/Assets/script.js"></script>
+</body>
+</html>
+
