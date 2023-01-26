@@ -54,6 +54,11 @@ var score
 var timerCount = 60;
 var index = [0]
 
+var storedInitials
+var scoresInitials = {
+    score: score,
+    userInitials: initialInput,
+}
 //Create a start button to start quiz
 startButton.addEventListener("click", startQuiz)
 function startQuiz() {
@@ -62,7 +67,7 @@ function startQuiz() {
     questionSection.classList.remove('hide')
     runQuestions()
     //set interval function to add timer to quiz
-     timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timerCount--;
         timeEl.textContent = timerCount + " seconds left till next question";
         if (timerCount <= 0) {
@@ -80,6 +85,7 @@ function runQuestions() {
     cBtn.textContent = questions[index].options[2]
     dBtn.textContent = questions[index].options[3]
 }
+// function removes 2 seconds from timer if user selects incorrect answer
 answerBtn.addEventListener("click", function (event) {
 
     var chosen = event.target.textContent
@@ -114,44 +120,46 @@ function endGame() {
     score = timerCount;
     console.log(score)
     clearInterval(timerInterval);
-    //hide question after last question or time is reached
+
 }
 function sendMessage() {
-   timeEl.textContent = "End of game!"
-
-   // submitButton.addEventListener('click', function () {
-   //     console.log(initialInput);
-   //     finalScore.textContent = `Initials: ${initials} Score: ${score}`;
-   // })
+    timeEl.textContent = "End of game!"
 }
 
-submitBtn.addEventListener('click', function(){
-    var userInitials = initialInput.value
-    console.log(userInitials)
-    //grab time left as score
-    //console log the score
-    ////store the data into local storage
-})
-
+submitBtn.onclick = renderLastGrade;
+// function allows user to input initials and displays list of all players scores and initials
+renderLastGrade();
 function renderLastGrade() {
-    localStorage.setItem("score",JSON.stringify(score));
-    localStorage.setItem("userInitials",JSON.stringify(userInitials));
-    
-    var storedInitials = JSON.parse.localStorage.getItem('highscores')
-    for (let index = 0; index < storedInitials.length; index++) {
-        let element = storedInitials[index];
-        console.log(element);
-    
-        var li = document.createElement('li')
-        li.textContent = `userInitials: ${element.userInitials} Score: ${element.score}`
-        highScores.appendChild(li); 
-}
-}
-    
+    submitBtn.addEventListener('click', function () {
+        var userInitials = initialInput.value
+        highScores.classList.remove('hide')
+        console.log(userInitials)
+        console.log('hello')
+        var storedInitials = JSON.parse(localStorage.getItem('storedInitials')) || []
+        var scoresInitials = {
+            score: score,
+            userInitials: userInitials
+        }
+        storedInitials.push(scoresInitials);
+        console.log(scoresInitials)
+        localStorage.setItem("storedInitials", JSON.stringify(storedInitials));
+        for (let index = 0; index < storedInitials.length; index++) {
+            let element = storedInitials[index];
+            console.log(element);
+
+            var li = document.createElement('li')
+            li.textContent = `userInitials: ${element.userInitials} Score: ${element.score}`
+            highScores.appendChild(li);
+        }
+    });
 
 
-//function renderLastGrade() {
-  // Use JSON.parse() to convert text to JavaScript object
-  //var lastGrade = JSON.parse(localStorage.getItem("studentGrade"));
+
+
+}
+
+
+
+
 
 
